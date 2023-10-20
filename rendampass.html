@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rendam password</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background: rgb(81, 81, 245);
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            font-family: sans-serif;
+            text-transform: capitalize;
+        }
+        .box{
+           
+            background-color: rgb(12, 153, 247);
+            /* width: 500px; */
+            padding: 50px;
+        }
+        h2{
+            text-align: center;
+            color: aliceblue;
+            margin-bottom: 70px;
+        }
+        #copy,#gen,#gen1{
+            width: 100px;
+            padding: 10px;
+            background-color: blue;
+            margin-top: 70px;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            color: white;
+            border-radius: 10px;
+            text-transform: capitalize;
+            font-size:15px;
+            font-family: sans-serif;
+
+        }
+        input::placeholder{
+            /* padding: 10px; */
+            background-color: antiquewhite;
+        }
+        #copy{
+            margin-left: 30px;
+        }
+        #gen{
+            margin-left: 10px;
+        }
+        #gen1{
+            margin-left: 30px;
+        }
+        input{
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            user-select: none;
+            outline: none;
+            width: 400px;
+            border: 2px solid rgb(40, 55, 230);
+            outline: none;
+            border-radius: 10px;
+            
+        }
+         #copy:hover{
+            background: rgb(29, 27, 27);
+            color: white;
+        }
+        #gen:hover{
+            background: rgb(29, 27, 27);
+            color: white;
+        }
+        #gen1:hover{
+            background: rgb(29, 27, 27);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>Random password generate</h2>
+        <input type="text" placeholder="password" id="password" readonly>
+        <table>
+            <tr>
+                <td><button id="gen" onclick="genpass()">generate</button>
+                    <button  id="copy" onclick="copypass()">copy</button>
+                    <button onclick="res()" id="gen1">rest</button></td>
+            </tr>
+        </table>
+    </div>
+
+
+
+    <script type="text/javascript">
+         function res(){
+           
+            document.getElementById('password').value = "";
+        }
+
+       
+        var password = document.getElementById("password");
+        function genpass(){
+            var chars ="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890?/>.<,:;-_+=!@#$%^&*()";
+            var passlenth = 12;
+            var password="";
+
+            for(i=0;i<=passlenth;i++){
+                var Randamno = Math.floor(Math.random()*chars.length);
+                password += chars.substring(Randamno,Randamno+1);
+            }
+            document.getElementById("password").Value=password;
+            document.getElementById("password").value=password;
+            // console.log(password);
+        }
+        function copypass(){
+            var copy1 = document.getElementById("password");
+            copy1.select();
+            document.execCommand("copy")
+        }
+    </script>
+</body>
+</html>
